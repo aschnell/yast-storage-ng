@@ -148,8 +148,25 @@ module Y2Partitioner
 
       # Values
 
+      def bidi_supported?
+        return @bidi_supported unless @bidi_supported.nil?
+        di = Yast::UI.GetDisplayInfo()
+        @bidi_supported = (di ? di["TextMode"] : nil) == false
+      end
+
+      def left_to_right(s)
+        # ncurses would get confused and truncates the text instead
+        return s unless bidi_supported?
+
+        # If we used a plain device.name
+        # then it would display as dev/sda1/ in a RTL context.
+        # Unicode BiDi Left-to-right embedding (LRE),
+        # then Pop Directional Formatting (PDF)
+        format("\u{202A}%s\u{202C}", s)
+      end
+
       def device_value(device)
-        device.name
+        left_to_right(device.name)
       end
 
       def size_value(device)
