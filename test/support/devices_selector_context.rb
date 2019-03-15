@@ -25,8 +25,16 @@ RSpec.shared_context "devices selector" do
     Y2Storage::BlkDevice.find_by_name(current_graph, name)
   end
 
+  def column_match?(column, regexp)
+    if column.respond_to?(:match?)
+      bidi_strip(column).match?(regexp)
+    else
+      false
+    end
+  end
+
   def row_match?(row, regexp)
-    row.any? { |column| column.respond_to?(:match?) && column.match?(regexp) }
+    row.any? { |column| column_match?(column, regexp) }
   end
 
   def rows_match?(rows, *args)

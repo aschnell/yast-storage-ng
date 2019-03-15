@@ -80,7 +80,7 @@ describe Y2Partitioner::Widgets::Pages::LvmVg do
 
       let(:table) { widgets.detect { |i| i.is_a?(Y2Partitioner::Widgets::LvmDevicesTable) } }
 
-      let(:items) { table.items.map { |i| i[1] } }
+      let(:items) { table.items.map { |i| bidi_strip(i[1]) } }
 
       before do
         create_thin_provisioning(lvm_vg)

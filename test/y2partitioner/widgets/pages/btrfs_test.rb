@@ -52,7 +52,7 @@ describe Y2Partitioner::Widgets::Pages::Btrfs do
       expect(table.items.size).to eq(5)
 
       devices_name = btrfs_devices.map(&:name)
-      items_name = table.items.map { |i| i[1] }
+      items_name = table.items.map { |i| bidi_strip(i[1]) }
 
       expect(items_name.sort).to eq(devices_name.sort)
     end

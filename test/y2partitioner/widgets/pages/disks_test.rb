@@ -50,7 +50,7 @@ describe Y2Partitioner::Widgets::Pages::Disks do
       expect(table).to_not be_nil
 
       devices_name = disks_and_parts.map(&:name)
-      items_name = table.items.map { |i| i[1] }
+      items_name = table.items.map { |i| bidi_strip(i[1]) }
 
       expect(items_name.sort).to eq(devices_name.sort)
     end
@@ -64,7 +64,7 @@ describe Y2Partitioner::Widgets::Pages::Disks do
       it "shows a table with the disk devices, their partitions and the Xen virtual partitions" do
         devices = disks_and_parts + device_graph.stray_blk_devices
         devices_name = devices.map(&:name)
-        items_name = table.items.map { |i| i[1] }
+        items_name = table.items.map { |i| bidi_strip(i[1]) }
 
         expect(items_name.sort).to eq(devices_name.sort)
       end

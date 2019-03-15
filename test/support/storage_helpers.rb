@@ -220,6 +220,10 @@ module Yast
       def stub_product_features(features)
         Yast::ProductFeatures.Import(features)
       end
+
+      def bidi_strip(s)
+        s.gsub(/[^[:ascii:]]*/, "") # filter out BiDi formatting
+      end
     end
     # rubocop:enable all
   end
