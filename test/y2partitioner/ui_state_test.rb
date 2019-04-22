@@ -345,4 +345,31 @@ describe Y2Partitioner::UIState do
       end
     end
   end
+
+  describe "#open_items_ids" do
+    context "if the open items has not been saved" do
+      before { described_class.create_instance }
+
+      it "returns nil" do
+        expect(ui_state.open_items_ids).to be_nil
+      end
+    end
+
+    context "after calling #save_open_items" do
+      let(:pager) { double("TreePager") }
+
+      before do
+        # The first call returns [:first, :third] and the second returns [:second]
+        allow(pager).to receive(:open_items_ids)
+          .and_return([:first, :third], [:second])
+
+        ui_state.overview_tree_pager = pager
+        ui_state.save_open_items
+      end
+
+      it "returns the items that were expanded when #save_open_items was called" do
+        expect(ui_state.open_items_ids).to eq [:first, :third]
+      end
+    end
+  end
 end
