@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 16 15:01:15 UTC 2019 - mvidner@suse.com
+
+- Untranslated error message in 'Edit Btrfs subvolumes'/
+  'Add subvolume' (bsc#1130822)
+- 4.1.84
+
+-------------------------------------------------------------------
 Mon Apr 15 15:46:04 UTC 2019 - ancor@suse.com
 
 - Partitioner: fixed translation issues related to bcache
