@@ -89,6 +89,7 @@ module Y2Partitioner
         #
         # @param controller [Actions::Controllers::Fstabs]
         def initialize(controller)
+          textdomain "storage"
           @controller = controller
         end
 

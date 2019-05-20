@@ -191,6 +191,7 @@ module Y2Partitioner
         #
         # @param fstab [Y2Storage::Fstab]
         def initialize(fstab)
+          textdomain "storage"
           @fstab = fstab
         end
 
@@ -235,6 +236,7 @@ module Y2Partitioner
         #
         # @param fstab [Y2Storage::Fstab]
         def initialize(fstab)
+          textdomain "storage"
           @fstab = fstab
         end
 
