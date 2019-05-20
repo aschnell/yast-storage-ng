@@ -25,6 +25,8 @@ ENV["Y2DIR"] = SRC_PATH
 # make sure we run the tests in English locale
 # (some tests check the output which is marked for translation)
 ENV["LC_ALL"] = "en_US.UTF-8"
+# fail fast if a class does not declare textdomain (bsc#1130822)
+ENV["Y2STRICTTEXTDOMAIN"] = "1"
 
 LIBS_TO_SKIP = ["y2packager/repository"]
 
